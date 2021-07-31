@@ -2,6 +2,7 @@ package com.mph.model;
 import java.util.Comparator;
 public class Employee {
 	
+	private int temp;
 	private int empno;
 	private String empname;
 	private Salary sal;
