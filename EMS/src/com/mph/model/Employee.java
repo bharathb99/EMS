@@ -1,5 +1,6 @@
 package com.mph.model;
 import java.util.Comparator;
+
 public class Employee {
 	
 	private int empno;
@@ -58,19 +59,6 @@ public class Employee {
 		return "Employee [empno=" + empno + ", empname=" + empname + ", sal=" + sal + ", dept=" + dept + "]";
 	}
 
-	public int compareTo(Employee e1) {
-		return this.empno - e1.empno;
-	}
-	
-	//Anonymous inner class
-	public static Comparator<Employee> nameComparator = new Comparator<Employee>() {
-		@Override
-		public int compare(Employee  e1,Employee  e2) {
-			return (e1.getEmpname().compareTo(e2.getEmpname()));
-		}	
-		
-	};
-	
-		
+			
 
 }
