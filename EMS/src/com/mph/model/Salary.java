@@ -1,57 +1,67 @@
 package com.mph.model;
-import com.mph.model.Salary;
 
-public class Salary {
+import java.io.Serializable;
+
+public class Salary implements Serializable  {
+
 	private int basic;
 	private int da;
-	private int hrf;
+	private int hra;
 	private int pf;
 	private int grossSalary;
 	private int netSalary;
-	
 
 	public int getBasic() {
 		return basic;
 	}
+
 	public void setBasic(int basic) {
 		this.basic = basic;
-		
 	}
+
 	public int getDa() {
 		return da;
 	}
+
 	public void setDa(int basic) {
-		this.da = basic*50/100;
+		this.da = basic * 36 / 100;
 	}
-	public int getHrf() {
-		return hrf;
+
+	public int getHra() {
+		return hra;
 	}
-	
-	public void setHrf(int basic) {
-		this.hrf = basic*40/100;
+
+	public void setHra(int basic) {
+		this.hra = basic * 10 / 100;
 	}
+
 	public int getPf() {
 		return pf;
 	}
+
 	public void setPf(int basic) {
-		this.pf = basic*10/100;
+		this.pf = basic * 12 / 100;
 	}
+
 	public int getGrossSalary() {
 		return grossSalary;
 	}
-	public void setGrossSalary() {
-		this.grossSalary = basic + da + hrf + pf;
+
+	public void setGrossSalary(int basic) {
+		this.grossSalary = basic + this.da + this.hra + this.pf;
 	}
+
 	public int getNetSalary() {
 		return netSalary;
 	}
-	public void setNetSalary() {
-		this.netSalary = grossSalary-pf;
+
+	public void setNetSalary(int basic) {
+		this.netSalary = basic + this.da + this.hra;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Salary [basic=" + basic + ", da=" + da + ", hrf=" + hrf + ", pf=" + pf + ", grossSalary=" + grossSalary
-				+ ", netSalary=" + netSalary + "]";
+		return "Salary Basic=" + basic + ",DA=" + da + ",HRA=" + hra + ",PF=" + pf + ",Gross Salary="
+				+ grossSalary + ",Net Salary=" + netSalary;
 	}
 }
