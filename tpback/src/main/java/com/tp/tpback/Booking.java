@@ -1,5 +1,6 @@
 package com.tp.tpback;
 
+<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,4 +16,12 @@ public class Booking {
 	
 	@Column
 	private  Date BookingDate;
+=======
+public class Booking {
+	
+	private String bookingStatus;
+	private int people;
+	private int 
+	
+>>>>>>> f11162447bbd7a7ac7a404036824fd3ad4918450
 }
