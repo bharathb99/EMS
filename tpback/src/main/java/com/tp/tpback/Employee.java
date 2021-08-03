@@ -3,11 +3,18 @@ package com.tp.tpback;
 import javax.persistence.*;
 
 @Entity
-public class Employee {
+@DiscriminatorValue("Employee")
+public class Employee extends User{
+	@Embedded
+	private Name name;
 	
-	private String name;
 	private int phone;
 	private String gender;
+	
+	@OneToOne
+	@JoinColumn(name = "dno")
+	private Department dept;
+	
 	
 	
 	public Employee() {
@@ -15,49 +22,45 @@ public class Employee {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public Employee(String name, int phone, String gender) {
+	public Employee(Name name, int phone, String gender, Department dept) {
 		super();
 		this.name = name;
 		this.phone = phone;
 		this.gender = gender;
+		this.dept = dept;
 	}
 
-
-	public String getName() {
+	public Name getName() {
 		return name;
 	}
-
-
-	public void setName(String name) {
+	public void setName(Name name) {
 		this.name = name;
 	}
-
-
 	public int getPhone() {
 		return phone;
 	}
-
-
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
-
-
 	public String getGender() {
 		return gender;
 	}
-
-
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
+	public Department getDept() {
+		return dept;
+	}
 
+	public void setDept(Department dept) {
+		this.dept = dept;
+	}
 
 	@Override
 	public String toString() {
-		return "Employee [name=" + name + ", phone=" + phone + ", gender=" + gender + "]";
+		return "Employee [phone=" + phone + ", gender=" + gender + ", dept=" + dept + "]";
 	}
-
 	
+		
 }
