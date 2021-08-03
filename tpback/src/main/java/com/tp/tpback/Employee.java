@@ -15,8 +15,6 @@ public class Employee extends User{
 	@JoinColumn(name = "dno")
 	private Department dept;
 	
-	
-	
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub

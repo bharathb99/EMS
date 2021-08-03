@@ -11,14 +11,10 @@ public class Department {
 	
 	private String dname;
 	
-	
-	
 	public Department() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 	
 	public Department(int dno, String dname) {
 		super();

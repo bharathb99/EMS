@@ -9,9 +9,11 @@ import javax.persistence.OneToOne;
 public class Package {
 	String itenary;
 	String package_name;
+	
 	@Id
 	int package_id;
 	String location;
+	
 	@OneToOne
 	@JoinColumn(name = "USERID")
 	int user_id;
