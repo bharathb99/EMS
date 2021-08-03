@@ -1,97 +1,105 @@
 package com.tp.tpback;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Package {
-	String itenary;
-	String package_name;
-	
+
 	@Id
-	int package_id;
-	String location;
+	@GeneratedValue
+	private int packageID;
+	
+	private String packageName;
+	private String itenary;
+	private String location;
+	private String hotel;
+	private int costPerDay;
 	
 	@OneToOne
-	@JoinColumn(name = "USERID")
-	int user_id;
+	@JoinColumn(name = "userID", referencedColumnName = "USERID")
+	private Employee employee;
+
 	public Package() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Package(String itenary, String package_name, int package_id, String location, int user_id,
-			String mode_of_transport, int cost_per_day, String hotel) {
+	public Package(int packageID, String packageName, String itenary, String location, String hotel, int costPerDay,
+			Employee employee) {
 		super();
+		this.packageID = packageID;
+		this.packageName = packageName;
 		this.itenary = itenary;
-		this.package_name = package_name;
-		this.package_id = package_id;
 		this.location = location;
-		this.user_id = user_id;
-		this.mode_of_transport = mode_of_transport;
-		this.cost_per_day = cost_per_day;
 		this.hotel = hotel;
+		this.costPerDay = costPerDay;
+		this.employee = employee;
 	}
 
-	String mode_of_transport;
-	int cost_per_day;
-	String hotel;
+	public int getPackageID() {
+		return packageID;
+	}
+
+	public void setPackageID(int packageID) {
+		this.packageID = packageID;
+	}
+
+	public String getPackageName() {
+		return packageName;
+	}
+
+	public void setPackageName(String packageName) {
+		this.packageName = packageName;
+	}
+
 	public String getItenary() {
 		return itenary;
 	}
+
 	public void setItenary(String itenary) {
 		this.itenary = itenary;
 	}
-	public String getPackage_name() {
-		return package_name;
-	}
-	public void setPackage_name(String package_name) {
-		this.package_name = package_name;
-	}
-	public int getPackage_id() {
-		return package_id;
-	}
-	public void setPackage_id(int package_id) {
-		this.package_id = package_id;
-	}
+
 	public String getLocation() {
 		return location;
 	}
+
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public int getUser_id() {
-		return user_id;
-	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
-	}
-	public String getMode_of_transport() {
-		return mode_of_transport;
-	}
-	public void setMode_of_transport(String mode_of_transport) {
-		this.mode_of_transport = mode_of_transport;
-	}
-	public int getCost_per_day() {
-		return cost_per_day;
-	}
-	public void setCost_per_day(int cost_per_day) {
-		this.cost_per_day = cost_per_day;
-	}
+
 	public String getHotel() {
 		return hotel;
 	}
+
 	public void setHotel(String hotel) {
 		this.hotel = hotel;
 	}
-	@Override
-	public String toString() {
-		return "Package [itenary=" + itenary + ", package_name=" + package_name + ", package_id=" + package_id + ", location="
-				+ location + ", user_id=" + user_id + ", mode_of_transport=" + mode_of_transport + ", cost_per_day="
-				+ cost_per_day + ", hotel=" + hotel + "]";
+
+	public int getCostPerDay() {
+		return costPerDay;
 	}
 
+	public void setCostPerDay(int costPerDay) {
+		this.costPerDay = costPerDay;
+	}
 
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	@Override
+	public String toString() {
+		return "Package [packageID=" + packageID + ", packageName=" + packageName + ", itenary=" + itenary
+				+ ", location=" + location + ", hotel=" + hotel + ", costPerDay=" + costPerDay + ", employee="
+				+ employee + "]";
+	}
+	
 }

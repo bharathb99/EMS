@@ -1,71 +1,64 @@
 package com.tp.tpback;
 
-
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
-@DiscriminatorColumn(name = "user_type")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "USER_TYPE")
+@Entity
 public class User {
-	
-	
+
 	@Id
-	private int user_id;
+	@GeneratedValue
+	private int userID;
 	
 	@Column
-	private String user_name;
+	private String username;
+	private String password;
 	
-	private String user_password;
-	
-	
-
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
-	
-
-	public User(int user_id, String user_name, String user_password) {
+	public User(int userID, String username, String password) {
 		super();
-		this.user_id = user_id;
-		this.user_name = user_name;
-		this.user_password = user_password;
+		this.userID = userID;
+		this.username = username;
+		this.password = password;
 	}
 
-
-
-	public int getUser_id() {
-		return user_id;
+	public int getUserID() {
+		return userID;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
 
-	public String getUser_name() {
-		return user_name;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getUser_password() {
-		return user_password;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setUser_password(String user_password) {
-		this.user_password = user_password;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", user_name=" + user_name + ", user_password=" + user_password + "]";
+		return "User [userID=" + userID + ", username=" + username + ", password=" + password + "]";
 	}
 	
-	
-	
-	
-		
 }
