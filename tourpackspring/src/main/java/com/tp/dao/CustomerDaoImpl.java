@@ -10,10 +10,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tp.entity.Customer;
 
 @Repository
+@Transactional
 public class CustomerDaoImpl implements CustomerDao{
 
 
@@ -30,7 +32,7 @@ public class CustomerDaoImpl implements CustomerDao{
 		getSession().saveOrUpdate(customer);
 		System.out.println("Customer has been stored successfully in DB !");
 	}
-
+	
 	@Override
 	public List<Customer> getAllCustomers() {
 		List<Customer> cuslist = new ArrayList<Customer>();
@@ -44,12 +46,11 @@ public class CustomerDaoImpl implements CustomerDao{
 		}
 		return cuslist;
 	}
-
+	
 	@Override
-	public Customer getCustomer(Customer customer) {
+	public Customer getCustomer(String email) {
 		Criteria c = getSession().createCriteria(Customer.class);
-		c.add(Restrictions.eq("email", customer.getEmail()));
-		c.add(Restrictions.eq("password", customer.getPassword()));
+		c.add(Restrictions.eq("email", email));
 		Customer cus = (Customer)c.uniqueResult();
 		System.out.println("Customer Retrieved : " + cus);
 		return cus;

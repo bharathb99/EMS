@@ -9,30 +9,34 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tp.entity.PackageBooking;
 
 @Repository
+@Transactional
 public class PackageBookingDaoImpl implements PackageBookingDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	protected Session getSession()
-	{
+
+	protected Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
-	
+
 	@Override
 	public void createPackageBooking(PackageBooking packBooking) {
-		
+
+		packBooking.setPackageCost(((packBooking.getPack().getCostPerDay() + packBooking.getPack().getHotelCostPerDay())
+				* packBooking.getNoOfPeope() + packBooking.getRentTransport().getChargesPerDay())
+				* packBooking.getNoOfDays());
 		getSession().saveOrUpdate(packBooking);
 		System.out.println("PackageBooking has been stored successfully in DB !");
 	}
 
 	@Override
 	public List<PackageBooking> getAllPackageBookings() {
-		
+
 		Query query = getSession().createQuery("from PackageBooking packBooking");
 		List<PackageBooking> packBookinglist = query.list();
 		System.out.println(packBookinglist);
@@ -41,7 +45,10 @@ public class PackageBookingDaoImpl implements PackageBookingDao {
 
 	@Override
 	public List<PackageBooking> updatePackageBooking(PackageBooking packBooking) {
-		
+
+		packBooking.setPackageCost(((packBooking.getPack().getCostPerDay() + packBooking.getPack().getHotelCostPerDay())
+				* packBooking.getNoOfPeope() + packBooking.getRentTransport().getChargesPerDay())
+				* packBooking.getNoOfDays());
 		getSession().saveOrUpdate(packBooking);
 		System.out.println("Package has been updated successfully in DB !");
 		return getAllPackageBookings();
@@ -49,12 +56,11 @@ public class PackageBookingDaoImpl implements PackageBookingDao {
 
 	@Override
 	public List<PackageBooking> deletePackageBooking(int pbno) {
-		
-		Query query = getSession().createQuery("delete from PackageBooking packBooking where packagebookingid=:pbno");
+
+		Query query = getSession().createQuery("delete from PackageBooking packBooking where packBookID=:pbno");
 		query.setParameter("pbno", pbno);
 		int noofrows = query.executeUpdate();
-		if(noofrows >0)
-		{
+		if (noofrows > 0) {
 			System.out.println("Deleted " + noofrows + " rows");
 		}
 		return getAllPackageBookings();
@@ -62,22 +68,22 @@ public class PackageBookingDaoImpl implements PackageBookingDao {
 
 	@Override
 	public PackageBooking getPackageBookingById(int pbid) {
-		
+
 		Criteria c = getSession().createCriteria(PackageBooking.class);
-		c.add(Restrictions.eq("packageBookingID", pbid));
-		PackageBooking packBooking = (PackageBooking)c.uniqueResult();
+		c.add(Restrictions.eq("packBookID", pbid));
+		PackageBooking packBooking = (PackageBooking) c.uniqueResult();
 		System.out.println(packBooking);
-		return packBooking; 
+		return packBooking;
 	}
 
 	@Override
 	public List<PackageBooking> getPackageBookingsByCId(int cid) {
-		
+
 		Query query = getSession().createQuery("from PackageBooking packBooking where customerid=:cid");
 		query.setParameter("cid", cid);
 		List<PackageBooking> packBookinglist = query.list();
 		System.out.println(packBookinglist);
-		return packBookinglist; 
+		return packBookinglist;
 	}
 
 }
