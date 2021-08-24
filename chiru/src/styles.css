@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import '~bootstrap/dist/css/bootstrap.min.css'; */
+.close{
+	position: absolute;
+	top : 0;
+	right: 14px;
+	font-size: 45px;
+	transform: rotate(45deg);
+	cursor: pointer;
+	border-radius: 100%;
+}

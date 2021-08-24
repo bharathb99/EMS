@@ -2,6 +2,7 @@ package com.tp.tpback;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -10,33 +11,35 @@ import javax.persistence.OneToOne;
 public class Package {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int packageID;
 	
 	private String packageName;
 	private String itenary;
 	private String location;
-	private String hotel;
-	private int costPerDay;
+	private String hotelName;
+	private double hotelCostPerDay;
+	private double costPerDay;
 	
 	@OneToOne
-	@JoinColumn(name = "userID", referencedColumnName = "USERID")
-	private Employee employee;
+	@JoinColumn(name = "rentalTransportID")
+	private RentalTransport rentalTransport;
 
 	public Package() {
 		super();
 	}
 
-	public Package(int packageID, String packageName, String itenary, String location, String hotel, int costPerDay,
-			Employee employee) {
+	public Package(int packageID, String packageName, String itenary, String location, String hotelName,
+			double hotelCostPerDay, double costPerDay, RentalTransport rentalTransport) {
 		super();
 		this.packageID = packageID;
 		this.packageName = packageName;
 		this.itenary = itenary;
 		this.location = location;
-		this.hotel = hotel;
+		this.hotelName = hotelName;
+		this.hotelCostPerDay = hotelCostPerDay;
 		this.costPerDay = costPerDay;
-		this.employee = employee;
+		this.rentalTransport = rentalTransport;
 	}
 
 	public int getPackageID() {
@@ -71,35 +74,43 @@ public class Package {
 		this.location = location;
 	}
 
-	public String getHotel() {
-		return hotel;
+	public String getHotelName() {
+		return hotelName;
 	}
 
-	public void setHotel(String hotel) {
-		this.hotel = hotel;
+	public void setHotelName(String hotelName) {
+		this.hotelName = hotelName;
 	}
 
-	public int getCostPerDay() {
+	public double getHotelCostPerDay() {
+		return hotelCostPerDay;
+	}
+
+	public void setHotelCostPerDay(double hotelCostPerDay) {
+		this.hotelCostPerDay = hotelCostPerDay;
+	}
+
+	public double getCostPerDay() {
 		return costPerDay;
 	}
 
-	public void setCostPerDay(int costPerDay) {
+	public void setCostPerDay(double costPerDay) {
 		this.costPerDay = costPerDay;
 	}
 
-	public Employee getEmployee() {
-		return employee;
+	public RentalTransport getRentalTransport() {
+		return rentalTransport;
 	}
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setRentalTransport(RentalTransport rentalTransport) {
+		this.rentalTransport = rentalTransport;
 	}
 
 	@Override
 	public String toString() {
 		return "Package [packageID=" + packageID + ", packageName=" + packageName + ", itenary=" + itenary
-				+ ", location=" + location + ", hotel=" + hotel + ", costPerDay=" + costPerDay + ", employee="
-				+ employee + "]";
+				+ ", location=" + location + ", hotelName=" + hotelName + ", hotelCostPerDay=" + hotelCostPerDay
+				+ ", costPerDay=" + costPerDay + ", rentalTransport=" + rentalTransport + "]";
 	}
 	
 }

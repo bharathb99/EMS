@@ -1,11 +1,10 @@
 package com.tp.tpback;
 
-
+import javax.persistence.Embeddable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Embeddable;
 
 @Embeddable
 public class Address {
@@ -20,12 +19,11 @@ public class Address {
 	private int pincode;
 	
 	@ManyToOne
-	@JoinColumn(name = "userID",referencedColumnName = "USERID")
+	@JoinColumn(name = "customerID",referencedColumnName = "CUSTOMERID")
 	private Customer customer;
 
 	public Address() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Address(int addrId, int doorno, String street, String city, int pincode, Customer customer) {
@@ -93,8 +91,3 @@ public class Address {
 	}
 
 }
-
-
-
-
-

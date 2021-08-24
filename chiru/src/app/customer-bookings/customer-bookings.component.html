@@ -1,0 +1,51 @@
+<p>customer-bookings works!</p>
+<div class="container mt-5 px-2">
+    <div class="mb-2 d-flex justify-content-between align-items-center">
+        <div class="position-relative"> <span class="position-absolute search"><i class="fa fa-search"></i></span> <input class="form-control w-100" placeholder="Search by order#, name..."> </div>
+        <div class="px-2"> <span>Filters <i class="fa fa-angle-down"></i></span> <i class="fa fa-ellipsis-h ms-3"></i> </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-responsive table-borderless">
+            <thead>
+                <tr class="bg-light">
+                    <!-- <th scope="col" class = "text-center" width="5%"></th> -->
+                    <th scope="col" class = "text-center" width="20%">customerID</th>
+                    <th scope="col" class = "text-center" width="20%">BookingID</th>
+                    <th scope="col" class = "text-center" width="20%">PackageID</th>
+                    <th scope="col" class = "text-center" width="10%">PackageName</th>
+                    <th scope="col" class = "text-center" width="20%">Days</th>
+                    <th scope="col" class = "text-center" width="20%">start date</th>
+                    <th scope="col" class = "text-center" width="15%">EndDate</th>
+                    <th scope="col" class = "text-center" width="30%">transportID</th>
+                    <th scope="col" class = "text-center" width="20%">vehicleProvider</th>
+                    <th scope="col" class = "text-center" width="30%">cost(v)</th>
+                    <th scope="col" class = "text-center" width="30%">seats</th>
+                    <th scope="col" class = "text-center" width="30%">Type(v)</th>
+                    <th scope="col" class = "text-center" width="10%">totalcost</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor= "let booking of bookings">
+                    <!-- <th scope="row"><input class="form-check-input" type="checkbox"></th> -->
+                    <td class = "text-center">{{booking.customer.customerID}}</td>
+                    <td class = "text-center">{{booking.packBookID}}</td>
+                    <td class = "text-center">{{booking.pack.packageID}}</td>
+                    <td class = "text-center">{{booking.pack.packageName}}</td>
+                    <td class = "text-center">{{booking.noOfDays}}</td>
+                    <td class = "text-center">{{booking.startDate}}</td>
+                    <td class = "text-center">{{booking.endDate}}</td>
+                    <td class = "text-center">{{booking.rentTransport.rentalTransportID}}</td>
+                    <td class = "text-center">{{booking.rentTransport.vehicleProvider}}</td>
+                    <td class = "text-center">{{booking.rentTransport.chargesPerDay}}</td>
+                    <td class = "text-center">{{booking.rentTransport.noOfSeats}}</td>
+                    <td class = "text-center">{{booking.rentTransport.vehicleType}}</td>
+                    <td class = "text-center">{{booking.packageCost}}</td>
+                    <!-- <td>
+                      <button type="button" (click) = 'deleteCustomer(customer.customerID)' class='btn btn-primary btn-sm far fa-trash-alt' ></button>
+                    </td> --> 
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>  
