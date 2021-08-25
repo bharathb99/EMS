@@ -1,0 +1,104 @@
+
+    
+<div class="page">
+  <section>
+    <!--for demo wrap-->
+    <h1>Package Booking Table</h1>
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+          <tr>
+            <th><h1>packBookID</h1></th>
+            <th><h1>noOfDays</h1></th>
+            <th><h1>noOfPeope</h1></th>
+            <th><h1>startDate</h1></th>
+            <th><h1>endDate</h1></th>
+            
+              <th><h1>packageID</h1></th>
+              <th><h1>packageName</h1></th>
+              <th><h1>itenary</h1></th>
+              <th><h1>location</h1></th>
+              <th><h1>hotelName</h1></th>
+              <th><h1>hotelCostPerDay</h1></th>
+              <th><h1>costPerDay</h1></th>
+           
+            <th><h1>customerID</h1></th>
+           
+                <th><h1>fname</h1></th>
+                <th><h1>lname</h1></th>
+            <th><h1>gender</h1></th>
+            <th><h1>password</h1></th>
+            <th><h1>email</h1></th>
+            <th><h1>dateOfBirth</h1></th>
+            <th><h1>phone</h1></th>
+            
+                <th><h1>doorno</h1></th>
+                <th><h1>street</h1></th>
+                <th><h1>city</h1></th>
+                <th><h1>pincode</h1></th>
+            
+            <th><h1>vehicleProvider</h1></th>
+            <th><h1>chargesPerDay</h1></th>
+            <th><h1>vehicleType</h1></th>
+            <th><h1>rentalTransportID</h1></th>
+      
+              </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+          <tr *ngFor="let packbook of packageBookings">
+            <td>{{ packbook.packBookID }}</td>
+            <td>{{ packbook.noOfDays }}</td>
+            <td>{{ packbook.noOfPeope }}</td>
+            <td>{{ packbook.startDate }}</td>
+            <td>{{ packbook.endDate }}</td>
+            
+            <td>{{ packbook.pack.packageID }}</td>
+            <td>{{ packbook.pack.packageName }}</td>
+            <td>{{ packbook.pack.itenary }}</td>
+            <td>{{ packbook.pack.location }}</td>
+            <td>{{ packbook.pack.hotelName }}</td>
+            <td>{{ packbook.pack.hotelCostPerDay }}</td>
+            <td>{{ packbook.pack.costPerDay }}</td> 
+      
+            <td>{{ packbook.customer.customerID }}</td>
+            <td>{{ packbook.customer.customerName.fname }}</td>
+            <td>{{ packbook.customer.customerName.lname }}</td>
+            <td>{{ packbook.customer.gender}}</td>
+            <td>{{ packbook.customer.password }}</td>
+            <td>{{ packbook.customer.email }}</td>
+            <td>{{ packbook.customer.dateOfBirth }}</td>
+            <td>{{ packbook.customer.phone }}</td>
+            <td>{{ packbook.customer.address.doorno }}</td>
+            <td>{{ packbook.customer.address.street }}</td>
+            <td>{{ packbook.customer.address.city }}</td>
+            <td>{{ packbook.customer.address.pincode }}</td>
+      
+            <td>{{ packbook.rentTransport.vehicleProvider }}</td>
+            <td>{{ packbook.rentTransport.chargesPerDayvehicleType }}</td>
+            <td>{{ packbook.rentTransport.vehicleTyperentalTransportID }}</td>
+            <td>{{ packbook.rentTransport.rentalTransportID }}</td>
+            <td>
+              <button
+                type="submit"
+                routerLink="/packageBookingedit/{{ packbook.packBookID }}"
+                class="edit"
+              >
+                EDIT
+              </button>
+      
+              <button type="submit" (click)="deletePackageBooking(packbook.packBookID)" class="delete">
+                DELETE
+              </button>
+            </td>
+          </tr>
+        
+        </tbody>
+      </table>
+    </div>
+  </section>
+  </div>
+  

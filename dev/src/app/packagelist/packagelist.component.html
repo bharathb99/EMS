@@ -1,0 +1,39 @@
+<div class="page">
+<table class="container">
+	<thead>
+		<tr>
+      <th><h1>packageID</h1></th>
+      <th><h1>packageName</h1></th>
+      <th><h1>itenary</h1></th>
+      <th><h1>location</h1></th>
+<th><h1>hotelName</h1></th>
+<th><h1>hotelCostPerDay</h1></th>
+<th><h1>costPerDay</h1></th>
+  </tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let pack of packages">
+      <td>{{ pack.packageID }}</td>
+      <td>{{ pack.packageName }}</td>
+      <td>{{ pack.itenary }}</td>
+      <td>{{ pack.location }}</td>
+      <td>{{ pack.hotelName }}</td>
+      <td>{{ pack.hotelCostPerDay }}</td>
+      <td>{{ pack.costPerDay }}</td>  
+      <td>
+        <button
+          type="submit"
+          routerLink="/packageupdate/{{ pack.packageID }}"
+          class="edit"
+        >
+          EDIT
+        </button>
+
+        <button type="submit" (click)="deletePackage(pack.packageID)" class="delete">
+          DELETE
+        </button>
+      </td>
+    </tr>
+	</tbody>
+</table>
+</div>

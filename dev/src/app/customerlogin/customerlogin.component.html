@@ -1,0 +1,44 @@
+
+<br/> 
+<br>
+
+<div class="container" id="container">
+	<div class="form-container log-in-container">
+		<form action="#">
+			<input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email" id="email" name="email" [(ngModel)]="customerDetails.email" #email="ngModel" />
+			<div *ngIf="email.invalid && (email.dirty || email.touched)"
+			class="alert">
+		
+		  <div *ngIf="email.errors?.required">
+			Name is required.
+		  </div>
+		  <div *ngIf="email.errors?.minlength">
+			Name must be at least 4 characters long.
+		  </div>
+		  <div *ngIf="email.errors?.forbiddenName">
+			Name cannot be Bob.
+		  </div>
+		
+		</div>
+	
+    <input type="password" class="form-control"  (keyup.enter)="loginCustomer()" placeholder="Password" id="password" name="password"
+        [(ngModel)]="customerDetails.password" />
+		
+    
+    <br>
+    
+   
+    <button type="submit" (click)="loginCustomer()">Log In</button>
+    {{message}}
+    <a routerLink="/customercreate" routerLinkActive="active">New User? Register</a>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-right">
+				<h1>Customer Login Page</h1>
+				<p>This website is full of Discounts And provides Best Tour Packages in the Market</p>
+			</div>
+		</div>
+	</div>
+</div>

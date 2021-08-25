@@ -1,0 +1,8 @@
+.page{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(135deg, #df641d,#71b7e6);
+  }

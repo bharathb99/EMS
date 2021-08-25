@@ -1,0 +1,49 @@
+<div class="page">
+    <div class="container">
+       <div class="title">Package Creation Form</div>
+       <div class="content">
+         <div class="form-row" >
+           <div class="user-details">
+             <div class="input-box">
+               <span class="details">Package Name</span>
+               <div class="form-group"><input type="text" class="form-control" [(ngModel)]="packageDetails.packageName" placeholder="Enter  Package name" id="lblpname" name="txtpname" required> </div>
+             </div>
+           
+             {{packageDetails.packageName}}
+             <div class="input-box">
+               <span class="details">Package Cost Per Person</span>
+               <div class="form-group"><input type="text" class="form-control" [(ngModel)]="packageDetails.costPerDay" placeholder="Enter your lname" id="lbllname" name="txtlname" required></div>
+             </div>
+             {{packageDetails.costPerDay}}
+             
+             <div class="input-box">
+               <span class="details">Enter Hotel's Name</span>
+               <div class="form-group"><input type="text" class="form-control" [(ngModel)]="packageDetails.hotelName" placeholder="Enter Hotel name" id="lblemail" name="txtemail" required></div>
+             </div>
+             {{packageDetails.hotelName}}
+             <div class="input-box">
+               <span class="details">Hotel's Cost Per Day </span>
+             <div class="form-group"><input type="text" class="form-control" [(ngModel)]="packageDetails.hotelCostPerDay" placeholder="Enter hotel Cost Per Day" id="lblmobileno" name="txtmobileno" required></div>
+             </div>
+             {{packageDetails.hotelCostPerDay}}
+             <div class="input-box">
+               <span class="details">Itenary</span>
+               <div class="form-group"><input type="text" class="form-control" [(ngModel)]="packageDetails.itenary" placeholder="Enter Itenary" id="lblpassword" name="txtpassword" required></div>
+             </div>
+             {{packageDetails.itenary}}
+             <div class="input-box">
+               <span class="details">Enter location</span>
+               <div class="form-group"><input type="text" class="form-control" [(ngModel)]="packageDetails.location" placeholder="Enter location" id="lbllocation" name="txtlocation" required></div>
+             </div>
+            </div>
+            {{packageDetails.location}}
+          
+           <div class="button">
+             <div class="form-group"><button type="submit" (click)="updatePackage()" class="btn btn-primary">
+               Add Package
+             </button></div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>

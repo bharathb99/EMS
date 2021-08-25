@@ -1,0 +1,32 @@
+<p>packlist works!</p>
+<p>packagelist works!</p>
+{{customerID}}
+<div class="page" *ngFor="let pack of packages">
+    <div class="card" >
+      <div class="card-image" background= "goa.jpg"></div>
+      <div class="card-text">
+        <span class="date">{{pack.noOFDays}} Days Trip</span>
+        <h2>{{pack.packageName}}</h2>
+        <p>{{pack.packageName}}:Having {{pack.hotelName}} and {{pack.itenary}} at {{pack.location}} costs 
+        pack.packageCost ,also have Rental Transport as 2/4 wheller</p>
+      </div>
+      <div class="card-stats">
+        <div class="stat">
+          <div class="value">{{pack.costPerDay}}</div>
+          <div class="type">read</div>
+        </div>
+        <div class="stat border">
+          <div class="value"><button type="submit" (click)="bookPackage()" class="btn btn-primary">
+            Book Package
+          </button></div>
+          <div class="type">views</div>
+        </div>
+        <div class="stat">
+          <div class="value">{{pack.noOfDays}}</div>
+          <div class="type">comments</div>
+        </div>
+      </div>
+    </div>
+    
+ </div>
+

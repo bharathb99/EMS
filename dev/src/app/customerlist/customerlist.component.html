@@ -1,0 +1,53 @@
+<p>customerlist works!</p>
+<div class="page">
+<table class="table table-hover table-warning">
+  <thead>
+    <tr>
+      <th scope="col">Customer ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Password</th>
+      <th scope="col">Email</th>
+      <th scope="col">Date of Birth</th>
+      <th scope="col">Phone number</th>
+      <th scope="col">Door no</th>
+      <th scope="col">Street</th>
+      <th scope="col">Pincode</th>
+      <th scope="col">City</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cus of customers">
+      <td>{{ cus.customerID }}</td>
+      <td>{{ cus.customerName.fname }}</td>
+      <td>{{ cus.customerName.lname }}</td>
+      <td>{{ cus.gender }}</td>
+      <td>{{ cus.password }}</td>
+      <td>{{ cus.email }}</td>
+      <td>{{ cus.dateOfBirth }}</td>
+      <td>{{ cus.phone }}</td>
+      <td>{{ cus.address.doorno }}</td>
+      <td>{{ cus.address.street }}</td>
+      <td>{{ cus.address.pincode }}</td>
+      <td>{{ cus.address.city }}</td>
+      
+      <td>
+        <button
+          type="submit"
+          routerLink="/customeredit/{{ cus.customerID }}"
+          class="edit"
+        >
+          EDIT
+        </button>
+
+        <button type="submit" (click)="deleteCustomer(cus.customerID)" class="delete">
+          DELETE
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

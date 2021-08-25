@@ -1,0 +1,98 @@
+
+<div>
+    <div class="small-navbar d-flex justify-content-between">
+        <div class="content">Welcome to Tour Package Booking</div>
+        <div class="d-flex">
+            <div class="email_address"><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;tourBooking@gmail.com</div>
+            <div class="phone_number"><i class="fa fa-phone"></i>&nbsp;&nbsp;&nbsp;+91 9876543210</div>
+        </div>
+    </div>
+    <div *ngIf="admin; then thenBlock; else elseBlock;"></div>
+    <ng-template #thenBlock>
+        <nav class="navbar navbar-expand-lg d-flex justify-content-between navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" routerLink="/admin" routerLinkActive="active">Admin</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" routerLink="/admin"
+                                routerLinkActive="active">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/package" routerLinkActive="active">Package</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/rentaltransport" routerLinkActive="active">Rental
+                                Transport</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" (click)="logout()" routerLink="/home"
+                                routerLinkActive="active">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </ng-template>
+    <ng-template #elseBlock>
+        <div *ngIf="user; then userBlock; else homeBlock;"></div>
+        <ng-template #userBlock>
+            <nav class="navbar navbar-expand-lg d-flex justify-content-between navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" routerLink="/packages" routerLinkActive="active">Hello</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" routerLink="/packages"
+                                    routerLinkActive="active">Packages</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/bookings" routerLinkActive="active">My Bookings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" (click)="logout()" routerLink="/home"
+                                    routerLinkActive="active">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </ng-template>
+        <ng-template #homeBlock>
+            <nav class="navbar navbar-expand-lg d-flex justify-content-between navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" routerLink="/home" routerLinkActive="active">TourPackageBooking</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" routerLink="/home"
+                                    routerLinkActive="active">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/customerlogin" routerLinkActive="active">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/customercreate" routerLinkActive="active">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </ng-template>
+    </ng-template>
+</div>
