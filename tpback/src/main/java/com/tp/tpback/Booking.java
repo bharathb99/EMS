@@ -5,61 +5,62 @@ import java.util.Date;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Booking {
 
 	@Id
-	@GeneratedValue
-	private int bookingID;
+	@GeneratedValue(strategy =GenerationType.AUTO)
+	private int bookingId;
 	
-	private  Date bookingDate = new Date();
-	private String bookingStatus;
-	private int numberOfPeople;
-	private double totalCost;
-	private Date tripStartDate = new Date();
-	private Date tripEndDate = new Date();
-	
-	@Embedded
-	private Transport transport;
-	
-	@ManyToOne
-	@JoinColumn(name = "userID", referencedColumnName = "USERID")
-	private Customer customer;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date bookingDate;
+	 
+	@OneToOne
+	@JoinColumn(name = "packageBookingID")
+	private int packageBookingID;
+	 
+	@OneToOne
+	@JoinColumn(name = "transportBookingID")
+	private int transportBookingID;
 	
 	@OneToOne
-	@JoinColumn(name = "packageID", referencedColumnName = "PACKAGEID")
-	private Package pack;
-
+	@JoinColumn(name = "customerID")
+	private int customerID;
+	 
+	private boolean bookingStatus;
+	private double totalCost;
+	
 	public Booking() {
 		super();
 	}
-
-	public Booking(int bookingID, Date bookingDate, String bookingStatus, int numberOfPeople, double totalCost,
-			Date tripStartDate, Date tripEndDate, Transport transport, Customer customer, Package pack) {
+	
+	public Booking(int bookingId, Date bookingDate, int packageBookingID, int transportBookingID, int customerID,
+			boolean bookingStatus, double totalCost) {
 		super();
-		this.bookingID = bookingID;
+		this.bookingId = bookingId;
 		this.bookingDate = bookingDate;
+		this.packageBookingID = packageBookingID;
+		this.transportBookingID = transportBookingID;
+		this.customerID = customerID;
 		this.bookingStatus = bookingStatus;
-		this.numberOfPeople = numberOfPeople;
 		this.totalCost = totalCost;
-		this.tripStartDate = tripStartDate;
-		this.tripEndDate = tripEndDate;
-		this.transport = transport;
-		this.customer = customer;
-		this.pack = pack;
 	}
 
-	public int getBookingID() {
-		return bookingID;
+	public int getBookingId() {
+		return bookingId;
 	}
 
-	public void setBookingID(int bookingID) {
-		this.bookingID = bookingID;
+	public void setBookingId(int bookingId) {
+		this.bookingId = bookingId;
 	}
 
 	public Date getBookingDate() {
@@ -70,20 +71,36 @@ public class Booking {
 		this.bookingDate = bookingDate;
 	}
 
-	public String getBookingStatus() {
+	public int getPackageBookingID() {
+		return packageBookingID;
+	}
+
+	public void setPackageBookingID(int packageBookingID) {
+		this.packageBookingID = packageBookingID;
+	}
+
+	public int getTransportBookingID() {
+		return transportBookingID;
+	}
+
+	public void setTransportBookingID(int transportBookingID) {
+		this.transportBookingID = transportBookingID;
+	}
+
+	public int getCustomerID() {
+		return customerID;
+	}
+
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
+	}
+
+	public boolean isBookingStatus() {
 		return bookingStatus;
 	}
 
-	public void setBookingStatus(String bookingStatus) {
+	public void setBookingStatus(boolean bookingStatus) {
 		this.bookingStatus = bookingStatus;
-	}
-
-	public int getNumberOfPeople() {
-		return numberOfPeople;
-	}
-
-	public void setNumberOfPeople(int numberOfPeople) {
-		this.numberOfPeople = numberOfPeople;
 	}
 
 	public double getTotalCost() {
@@ -94,52 +111,11 @@ public class Booking {
 		this.totalCost = totalCost;
 	}
 
-	public Date getTripStartDate() {
-		return tripStartDate;
-	}
-
-	public void setTripStartDate(Date tripStartDate) {
-		this.tripStartDate = tripStartDate;
-	}
-
-	public Date getTripEndDate() {
-		return tripEndDate;
-	}
-
-	public void setTripEndDate(Date tripEndDate) {
-		this.tripEndDate = tripEndDate;
-	}
-
-	public Transport getTransport() {
-		return transport;
-	}
-
-	public void setTransport(Transport transport) {
-		this.transport = transport;
-	}
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public Package getPack() {
-		return pack;
-	}
-
-	public void setPack(Package pack) {
-		this.pack = pack;
-	}
-
 	@Override
 	public String toString() {
-		return "Booking [bookingID=" + bookingID + ", bookingDate=" + bookingDate + ", bookingStatus=" + bookingStatus
-				+ ", numberOfPeople=" + numberOfPeople + ", totalCost=" + totalCost + ", tripStartDate=" + tripStartDate
-				+ ", tripEndDate=" + tripEndDate + ", transport=" + transport + ", customer=" + customer + ", pack="
-				+ pack + "]";
+		return "Booking [bookingId=" + bookingId + ", bookingDate=" + bookingDate + ", packageBookingID="
+				+ packageBookingID + ", transportBookingID=" + transportBookingID + ", customerID=" + customerID
+				+ ", bookingStatus=" + bookingStatus + ", totalCost=" + totalCost + "]";
 	}
 	
 }

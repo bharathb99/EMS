@@ -1,0 +1,51 @@
+<p>login works!</p>
+
+<div class="bodyclass" *ngIf="login">
+    <div class="container" id="container">
+      <div class="form-container log-in-container">
+        <div class="close" (click)="close()">+</div>
+        <form action="#">
+          <div class = "heading">
+            <h1>Login</h1>
+          </div>
+          
+          <div class="social-container">
+            <a href="#" class="social"><i class="fa fa-facebook fa-2x"></i></a>
+            <a href="#" class="social"
+              ><i class="fab fa fa-twitter fa-2x"></i
+            ></a>
+          </div>
+          <span>or use your account</span>
+          <input
+            type="email"
+            placeholder="Email"
+            id="lblemail"
+            name="txtemail"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            id="lblpassword"
+            name="txtpassword"
+          />
+          <a href="#">Forgot your password?</a>
+          <button>Log In</button>
+          <a routerLink="/sign-up" routerLinkActive="active"
+            >If New User,Register Here!!!</a
+          >
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-right">
+            <h1>Customer Login Page</h1>
+            <p>
+              This website is full of Discounts And provides Best Tour Packages
+              in the Market
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

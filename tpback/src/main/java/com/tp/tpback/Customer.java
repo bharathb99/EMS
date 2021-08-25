@@ -1,91 +1,132 @@
 package com.tp.tpback;
-import java.util.Date;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Embedded;
 
+import java.util.Calendar;
+
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-@DiscriminatorValue("customer")
-public class Customer extends User {
+public class Customer {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int customerID;
 	
-	private String email;
-	private String gender;
-	private String phone;
-	private Date dob;
+	@Embedded
+	private Name customerName;
 	
 	@Embedded
 	private Address address;
-	@Embedded
-	private Name name;
 	
+	private String gender;
+	private String password;
+	private String username;
+	private String email;
+	
+	@Temporal(TemporalType.DATE)
+	private Calendar dateOfBirth;
+	private int phone;
 	
 	public Customer() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	
-	public Customer(Name name, String email, String gender, String phone, Date dob, Address address) {
+
+	public Customer(int customerID, Name customerName, Address address, String gender, String password, String username,
+			String email, Calendar dateOfBirth, int phone) {
 		super();
-		this.name = name;
-		this.email = email;
-		this.gender = gender;
-		this.phone = phone;
-		this.dob = dob;
+		this.customerID = customerID;
+		this.customerName = customerName;
 		this.address = address;
-	}
-	
-	public Name getName() {
-		return name;
-	}
-	public void setName(Name name) {
-		this.name = name;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
 		this.gender = gender;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
+		this.password = password;
+		this.username = username;
+		this.email = email;
+		this.dateOfBirth = dateOfBirth;
 		this.phone = phone;
 	}
-	
-	public Date getDob() {
-		return dob;
+
+	public int getCustomerID() {
+		return customerID;
 	}
-	public void setDob(Date dob) {
-		this.dob = dob;
+
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
 	}
+
+	public Name getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(Name customerName) {
+		this.customerName = customerName;
+	}
+
 	public Address getAddress() {
 		return address;
 	}
+
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Calendar getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Calendar dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public int getPhone() {
+		return phone;
+	}
+
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
+
 	@Override
 	public String toString() {
-		return "Customer [name=" + name + ", email=" + email + ", gender=" + gender + ", phone=" + phone + ", dob="
-				+ dob + ", address=" + address + "]";
+		return "Customer [customerID=" + customerID + ", customerName=" + customerName + ", address=" + address
+				+ ", gender=" + gender + ", password=" + password + ", username=" + username + ", email=" + email
+				+ ", dateOfBirth=" + dateOfBirth + ", phone=" + phone + "]";
 	}
 	
-
 }
-
-
-
-
-
-
-

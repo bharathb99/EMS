@@ -14,6 +14,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -31,10 +32,11 @@ public class Customer {
 	private String gender;
 	@Column
 	private String password;
-	@Column
+	@Column(unique=true)
 	private String email;
 	
 	@Temporal(TemporalType.DATE)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private Date dateOfBirth;
 	@Column
 	private String phone;

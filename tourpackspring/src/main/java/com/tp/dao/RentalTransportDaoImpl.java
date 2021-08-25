@@ -41,6 +41,7 @@ public class RentalTransportDaoImpl implements RentalTransportDao {
 		System.out.println("TwoWheeler has been stored successfully in DB !");
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<RentalTransport> getAllRentalTransport() {
 
@@ -87,6 +88,17 @@ public class RentalTransportDaoImpl implements RentalTransportDao {
 		System.out.println(rentalTransport);
 		return rentalTransport; 
 
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<RentalTransport> SortRentalTransportByCharges(double min, double max) {
+		Query query = getSession().createQuery("from RentalTransport rentTrans where chargesperday between :min and :max");
+		query.setParameter("min", min);
+		query.setParameter("max", max);
+		List<RentalTransport> rentalTransportlist = query.list();
+		System.out.println(rentalTransportlist);
+		return rentalTransportlist;
 	}
 
 	
